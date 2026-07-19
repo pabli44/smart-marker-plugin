@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartMarker - Panel Lateral</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <div class="container">
+    <h1>SmartMarker</h1>
+    <div class="search-box">
+      <input type="text" id="sidepanelSearchInput" placeholder="Buscar marcadores...">
+      <button id="sidepanelSearchBtn">🔍</button>
+    </div>
+    <div class="results-container">
+      <div class="results-header">
+        <div class="result-title-header">Título</div>
+        <div class="result-url-header">URL</div>
+        <div class="result-folder-header">Carpeta</div>
+        <div class="result-tags-header">Tags</div>
+      </div>
+      <div class="results" id="sidepanelResults"></div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartMarker</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>SmartMarker</h1>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Buscar marcadores...">
+      <button id="searchBtn">🔍</button>
+    </div>
+
+    <div class="results-container">
+      <div class="results" id="results"></div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
