@@ -2,7 +2,6 @@
 
 **A fast, organized, and visually appealing bookmark manager for Chrome, Firefox, Edge, Opera, and Brave**
 
-![SmartMarker Demo](https://via.placeholder.com/600x400/3498db/ffffff?text=SmartMarker+Demo)
 
 ## ✨ Features
 
