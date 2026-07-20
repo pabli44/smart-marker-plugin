@@ -44,6 +44,20 @@ Modern browsers save hundreds of bookmarks, but finding them is a pain:
 - Same powerful search
 - Perfect integration with your workflow
 
+## 💙 Support & Donations
+
+SmartMarker is free and open source, but you can support its development:
+
+[![Donate with PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=SPMZP3BUPVMMA)
+
+**Your donation helps:**
+- ✅ Faster bug fixes and new features
+- ✅ Cross-browser support (Safari coming soon!)
+- ✅ Cloud sync and backup options
+- ✅ Continuous development and updates
+
+*Thank you for your support!* 🙏
+
 ## 📥 Installation
 
 ### From Chrome Web Store (Coming Soon)
@@ -54,7 +68,7 @@ Modern browsers save hundreds of bookmarks, but finding them is a pain:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/smart-marker-plugin.git
+   git clone https://github.com/pablo-velilla/smart-marker-plugin.git
    cd smart-marker-plugin
    ```
 
@@ -72,6 +86,36 @@ Modern browsers save hundreds of bookmarks, but finding them is a pain:
    - Select the `manifest.json` file from the project folder
 
 3. **Done!** Use the extension from your browser's toolbar.
+
+### 🎯 How to See the Donate Button in the Extension
+
+The donate button appears in the top-right corner of the SmartMarker popup:
+
+```
+┌─────────────────────────────────────────┐
+│  SmartMarker  [💙 Support Development]  │
+│                                         │
+│  [Search box]  [🔍 Search]             │
+│                                         │
+│  Title      URL              Folder     │
+│  ────────────────────────────────────  │
+│  Bookmark 1  example.com   My Folder   │
+│  Bookmark 2  google.com    Work       │
+│  ...                                   │
+└─────────────────────────────────────────┘
+```
+
+Click on "💙 Support Development" to visit the donation page and support the project!
+
+## 🌐 Cross-Browser Installation Guide
+
+| Browser | Installation Method | Status |
+|---------|---------------------|--------|
+| **Chrome** | `chrome://extensions` → Load unpacked | ✅ Works |
+| **Firefox** | `about:debugging#/runtime/this-firefox` → Load Temporary Add-on | ✅ Works |
+| **Edge** | `edge://extensions` → Load unpacked | ✅ Works |
+| **Opera** | `opera://extensions` → Load unpacked | ✅ Works |
+| **Brave** | `brave://extensions` → Load unpacked | ✅ Works |
 
 ## 🛠 Technologies Used
 

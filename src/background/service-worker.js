@@ -1,13 +1,13 @@
-// Service worker básico para SmartMarker Plugin
-// Solo maneja inicialización y logging
+// Basic service worker for SmartMarker Plugin
+// Handles initialization and logging only
 
 chrome.runtime.onInstalled.addListener(() => {
-  console.log('🎉 SmartMarker Plugin instalado correctamente');
-  console.log('📌 Versión: 1.0');
-  console.log('🔍 Búsqueda rápida de marcadores');
-  console.log('📁 Muestra la carpeta de cada marcador');
+  console.log('🎉 SmartMarker Plugin installed successfully');
+  console.log('📌 Version: 1.0');
+  console.log('🔍 Quick bookmark search');
+  console.log('📁 Shows folder for each bookmark');
   
-  // Configurar valores por defecto
+  // Configure default values
   chrome.storage.local.set({
     bookmarksCache: [],
     lastSync: Date.now()
@@ -17,8 +17,8 @@ chrome.runtime.onInstalled.addListener(() => {
 // Manejo de errores global
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type === 'ERROR') {
-    console.error('Error en SmartMarker:', request.message);
+    console.error('SmartMarker error:', request.message);
   }
 });
 
-console.log('🚀 Service worker de SmartMarker iniciado');
+console.log('🚀 SmartMarker service worker started');
