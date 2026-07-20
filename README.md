@@ -92,17 +92,20 @@ SmartMarker is free and open source, but you can support its development:
 The donate button appears in the top-right corner of the SmartMarker popup:
 
 ```
-┌─────────────────────────────────────────┐
-│  SmartMarker  [💙 Support Development]  │
-│                                         │
-│  [Search box]  [🔍 Search]             │
-│                                         │
-│  Title      URL              Folder     │
-│  ────────────────────────────────────  │
-│  Bookmark 1  example.com   My Folder   │
-│  Bookmark 2  google.com    Work       │
-│  ...                                   │
-└─────────────────────────────────────────┘
+┌───────────────────────────────────────────────┐
+│  SmartMarker           [💙 Support Development]│
+│                                               │
+│  [Search box]    [🔍 Search]                  │
+│                                               │
+│  Bookmark Title                               │
+│  example.com                                  │
+│  📁 Location: Bookmarks/My Folder             │
+│  ──────────────────────────────────────────── │
+│  Google                                       │
+│  google.com                                   │
+│  📁 Location: Bookmarks/Work                  │
+│  ...                                          │
+└───────────────────────────────────────────────┘
 ```
 
 Click on "💙 Support Development" to visit the donation page and support the project!
