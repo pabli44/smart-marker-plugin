@@ -93,7 +93,7 @@ The donate button appears in the top-right corner of the SmartMarker popup:
 
 ```
 ┌───────────────────────────────────────────────┐
-│  SmartMarker           [💙 Support Development]│
+│  SmartMarker         [💙 Support Development] │
 │                                               │
 │  [Search box]    [🔍 Search]                  │
 │                                               │
@@ -186,8 +186,8 @@ This project is licensed under the **MIT License** - feel free to use, modify, a
 
 ## 📞 Support
 
-- **GitHub Issues:** [Report an issue](https://github.com/your-username/smart-marker-plugin/issues)
-- **Email:** your-email@example.com
+- **GitHub Issues:** [Report an issue](https://github.com/pabli44/smart-marker-plugin/issues)
+- **Email:** pablivg@gmail.com
 
 ## 🌟 Future Improvements
 
