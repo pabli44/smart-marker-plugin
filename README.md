@@ -24,21 +24,18 @@ Modern browsers save hundreds of bookmarks, but finding them is a pain:
 ## 🎯 Features
 
 ### Fast Search
-![Search](https://via.placeholder.com/400x200/f5f5f5/333333?text=Fast+Search)
 
 - Search by title or URL
 - Real-time results
 - Quick filtering
 
 ### Visual Organization
-![Organization](https://via.placeholder.com/400x200/f5f5f5/333333?text=Visual+Organization)
 
 - **Shows the folder** where each bookmark is stored
 - **Card design** with hover effects
 - **Visual tags** for better identification
 
 ### Sidebar Panel
-![Sidebar](https://via.placeholder.com/400x200/f5f5f5/333333?text=Sidebar+Panel)
 
 - Access from any page
 - Same powerful search
