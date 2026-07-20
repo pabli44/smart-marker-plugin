@@ -1,151 +1,158 @@
 # 🚀 SmartMarker Plugin
 
-**Un gestor de marcadores rápido, organizado y visualmente atractivo para Chrome y Firefox**
+**A fast, organized, and visually appealing bookmark manager for Chrome, Firefox, Edge, Opera, and Brave**
 
 ![SmartMarker Demo](https://via.placeholder.com/600x400/3498db/ffffff?text=SmartMarker+Demo)
 
-## ✨ Características
+## ✨ Features
 
-✅ **Búsqueda inteligente** - Encuentra tus marcadores al instante
-✅ **Organización visual** - Muestra la carpeta de cada marcador
-✅ **Interfaz moderna** - Diseño limpio y responsive
-✅ **Multi-plataforma** - Funciona en Chrome, Firefox y Edge
-✅ **Gratis y open source** - Sin costos ocultos
+✅ **Smart search** - Find your bookmarks instantly
+✅ **Visual organization** - Shows the folder where each bookmark is stored
+✅ **Modern interface** - Clean and responsive design
+✅ **Cross-browser** - Works on Chrome, Firefox, Edge, Opera, and Brave
+✅ **Free and open source** - No hidden costs
 
-## 📋 ¿Por qué SmartMarker?
+## 📋 Why SmartMarker?
 
-Los navegadores modernos guardan cientos de marcadores, pero encontrarlos es un dolor:
-- ❌ Chrome/Firefox no tienen búsqueda avanzada
-- ❌ Los marcadores se pierden en carpetas interminables
-- ❌ No hay forma rápida de ver dónde está guardado cada enlace
+Modern browsers save hundreds of bookmarks, but finding them is a pain:
+- ❌ Chrome/Firefox don't have advanced search
+- ❌ Bookmarks get lost in endless folders
+- ❌ No quick way to see where each link is saved
 
-**SmartMarker resuelve todo esto** con una interfaz limpia y funcional.
+**SmartMarker solves all this** with a clean and functional interface.
 
-## 🎯 Funcionalidades
+## 🎯 Features
 
-### Búsqueda Rápida
-![Búsqueda](https://via.placeholder.com/400x200/f5f5f5/333333?text=Búsqueda+Rápida)
+### Fast Search
+![Search](https://via.placeholder.com/400x200/f5f5f5/333333?text=Fast+Search)
 
-- Busca por título o URL
-- Resultados en tiempo real
-- Filtra marcadores rápidamente
+- Search by title or URL
+- Real-time results
+- Quick filtering
 
-### Organización Visual
-![Organización](https://via.placeholder.com/400x200/f5f5f5/333333?text=Organización+Visual)
+### Visual Organization
+![Organization](https://via.placeholder.com/400x200/f5f5f5/333333?text=Visual+Organization)
 
-- **Muestra la carpeta** donde está guardado cada marcador
-- **Diseño de tarjetas** con hover effects
-- **Tags visuales** para mejor identificación
+- **Shows the folder** where each bookmark is stored
+- **Card design** with hover effects
+- **Visual tags** for better identification
 
-### Panel Lateral
-![Panel Lateral](https://via.placeholder.com/400x200/f5f5f5/333333?text=Panel+Lateral)
+### Sidebar Panel
+![Sidebar](https://via.placeholder.com/400x200/f5f5f5/333333?text=Sidebar+Panel)
 
-- Accede desde cualquier página
-- Mismo buscador potente
-- Integración perfecta con tu flujo de trabajo
+- Access from any page
+- Same powerful search
+- Perfect integration with your workflow
 
-## 📥 Instalación
+## 📥 Installation
 
-### Desde Chrome Web Store (Próximamente)
+### From Chrome Web Store (Coming Soon)
 
-### Desde Firefox Add-ons (Próximamente)
+### From Firefox Add-ons (Coming Soon)
 
-### Desarrollo Local
+### Local Development
 
-1. **Clona el repositorio:**
+1. **Clone the repository:**
    ```bash
-   git clone https://github.com/tu-usuario/smart-marker-plugin.git
+   git clone https://github.com/your-username/smart-marker-plugin.git
    cd smart-marker-plugin
    ```
 
-2. **Carga la extensión en Chrome:**
-   - Ve a `chrome://extensions`
-   - Activa "Modo desarrollador"
-   - Haz clic en "Cargar extensión sin comprimir"
-   - Selecciona la carpeta del proyecto
+2. **Load the extension in your browser:**
 
-3. **¡Listo!** Usa la extensión desde la barra de herramientas.
+   **🔹 Google Chrome / Microsoft Edge / Opera / Brave:**
+   - Go to: `chrome://extensions`
+   - Enable "Developer mode" (toggle in the top right)
+   - Click "Load unpacked"
+   - Select the `smart-marker-plugin` folder
 
-## 🛠 Tecnologías Usadas
+   **🔹 Mozilla Firefox (Latest Versions):**
+   - Go to: `about:debugging#/runtime/this-firefox`
+   - Click "Load Temporary Add-on"
+   - Select the `manifest.json` file from the project folder
 
-- **JavaScript ES6+** - Lógica principal
-- **HTML5/CSS3** - Interfaz de usuario
-- **WebExtensions API** - Compatibilidad multiplataforma
-- **Fuse.js** - Búsqueda difusa avanzada
-- **Chrome Storage API** - Almacenamiento local
+3. **Done!** Use the extension from your browser's toolbar.
 
-## 📁 Estructura del Proyecto
+## 🛠 Technologies Used
+
+- **JavaScript ES6+** - Main logic
+- **HTML5/CSS3** - User interface
+- **WebExtensions API** - Cross-platform compatibility
+- **Fuse.js** - Advanced fuzzy search
+- **Chrome Storage API** - Local storage
+
+## 📁 Project Structure
 
 ```
 smart-marker-plugin/
-├── manifest.json              # Configuración principal
+├── manifest.json              # Main configuration
 ├── src/
 │   ├── popup/
-│   │   ├── popup.html         # Interfaz popup
-│   │   ├── popup.css          # Estilos popup
-│   │   └── popup.js           # Lógica popup
+│   │   ├── popup.html         # Popup interface
+│   │   ├── popup.css          # Popup styles
+│   │   └── popup.js           # Popup logic
 │   ├── sidepanel/
-│   │   ├── sidepanel.html     # Interfaz panel lateral
-│   │   ├── sidepanel.css      # Estilos panel lateral
-│   │   └── sidepanel.js       # Lógica panel lateral
+│   │   ├── sidepanel.html     # Sidebar interface
+│   │   ├── sidepanel.css      # Sidebar styles
+│   │   └── sidepanel.js       # Sidebar logic
 │   └── background/
-│       └── service-worker.js  # Service worker
-└── README.md                  # Documentación
+│       └── service-worker.js  # Background script
+└── README.md                  # Documentation
 ```
 
-## 🎨 Diseño
+## 🎨 Design
 
-El plugin cuenta con:
-- **Paleta de colores:** Azul profesional (#3498db, #2c3e50)
-- **Tipografía:** Sistema fonts (Segoe UI, Roboto, etc.)
-- **Animaciones:** Efectos hover y transiciones suaves
-- **Responsive:** Funciona en cualquier tamaño
-- **Modo oscuro compatible:** Se integra con el tema del navegador
+The plugin features:
+- **Color palette:** Professional blue (#3498db, #2c3e50)
+- **Typography:** System fonts (Segoe UI, Roboto, etc.)
+- **Animations:** Smooth hover effects and transitions
+- **Responsive:** Works on any screen size
+- **Dark mode compatible:** Integrates with browser theme
 
-## 📊 Estadísticas
+## 📊 Statistics
 
-- **Marcadores soportados:** Ilimitados
-- **Rendimiento:** Búsqueda instantánea (<100ms)
-- **Memoria:** Optimizado para bajo consumo
-- **Compatibilidad:** Chrome 90+, Firefox 88+, Edge 90+
+- **Supported bookmarks:** Unlimited
+- **Performance:** Instant search (<100ms)
+- **Memory:** Optimized for low consumption
+- **Compatibility:** Chrome 90+, Firefox 88+, Edge 90+, Opera 75+, Brave 1.30+
 
-## 🔧 Personalización
+## 🔧 Customization
 
-Puedes personalizar:
-- **Colores:** Modifica las variables CSS en popup.css/sidepanel.css
-- **Tamaño:** Ajusta el width en el CSS
-- **Fuentes:** Cambia la tipografía en el CSS
+You can customize:
+- **Colors:** Modify CSS variables in popup.css/sidepanel.css
+- **Size:** Adjust the width in the CSS
+- **Fonts:** Change typography in the CSS
 
-## 🤝 Contribuir
+## 🤝 Contributing
 
-¡Las contribuciones son bienvenidas! Si quieres mejorar SmartMarker:
+Contributions are welcome! If you want to improve SmartMarker:
 
-1. Haz un fork del repositorio
-2. Crea una rama para tu feature (`git checkout -b feature/nueva-funcionalidad`)
-3. Haz commit de tus cambios (`git commit -m 'Añade nueva funcionalidad'`)
-4. Haz push a la rama (`git push origin feature/nueva-funcionalidad`)
-5. Abre un Pull Request
+1. Fork the repository
+2. Create a branch for your feature (`git checkout -b feature/new-feature`)
+3. Commit your changes (`git commit -m 'Add new feature'`)
+4. Push to the branch (`git push origin feature/new-feature`)
+5. Open a Pull Request
 
-## 📄 Licencia
+## 📄 License
 
-Este proyecto está bajo la licencia **MIT** - puedes usarlo, modificarlo y distribuirlo libremente.
+This project is licensed under the **MIT License** - feel free to use, modify, and distribute.
 
-## 📞 Soporte
+## 📞 Support
 
-- **GitHub Issues:** [Reportar un problema](https://github.com/tu-usuario/smart-marker-plugin/issues)
-- **Email:** tu-email@example.com
+- **GitHub Issues:** [Report an issue](https://github.com/your-username/smart-marker-plugin/issues)
+- **Email:** your-email@example.com
 
-## 🌟 Futuras Mejoras
+## 🌟 Future Improvements
 
-- [ ] Sincronización en la nube
-- [ ] Importación/exportación de marcadores
-- [ ] Modo oscuro
-- [ ] Atajos de teclado personalizables
-- [ ] Integración con Notion/Todoist
-- [ ] Versión para Safari
+- [ ] Cloud synchronization
+- [ ] Bookmark import/export
+- [ ] Dark mode
+- [ ] Custom keyboard shortcuts
+- [ ] Notion/Todoist integration
+- [ ] Safari version
 
 ---
 
-**💡 Tip:** Organiza tus marcadores en carpetas en Chrome para mejor experiencia con SmartMarker
+**💡 Tip:** Organize your bookmarks in folders in Chrome for the best SmartMarker experience
 
-*Hecho con ❤️ por desarrolladores para desarrolladores*
+*Made with ❤️ by developers for developers*

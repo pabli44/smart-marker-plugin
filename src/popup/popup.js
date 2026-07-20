@@ -1,85 +1,85 @@
 // ============================================
-// SMARTMARKER PLUGIN - POPUP.JS (VERSIÓN FUNCIONAL COMPLETA)
+// SMARTMARKER PLUGIN - POPUP.JS (ENGLISH VERSION)
 // ============================================
 
-console.log('🚀 SmartMarker Popup iniciando...');
+console.log('🚀 SmartMarker Popup starting...');
 
-// Variable global para almacenar marcadores
+// Global variable to store bookmarks
 globalThis.smartMarkerBookmarks = [];
 
-// Esperar a que el DOM esté listo
+// Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log('📄 DOM cargado, inicializando extensión...');
+  console.log('📄 DOM loaded, initializing extension...');
   
-  // Obtener elementos del DOM
+  // Get DOM elements
   const searchInput = document.getElementById('searchInput');
   const searchBtn = document.getElementById('searchBtn');
   const resultsContainer = document.getElementById('results');
   
-  // Verificación básica
+  // Basic verification
   if (!searchInput) {
-    console.error('❌ ERROR CRÍTICO: searchInput no encontrado en el DOM');
+    console.error('❌ CRITICAL ERROR: searchInput not found in DOM');
     return;
   }
   
   if (!searchBtn) {
-    console.error('❌ ERROR CRÍTICO: searchBtn no encontrado en el DOM');
+    console.error('❌ CRITICAL ERROR: searchBtn not found in DOM');
     return;
   }
   
   if (!resultsContainer) {
-    console.error('❌ ERROR CRÍTICO: resultsContainer no encontrado en el DOM');
+    console.error('❌ CRITICAL ERROR: resultsContainer not found in DOM');
     return;
   }
   
-  console.log('✅ Todos los elementos del DOM encontrados correctamente');
+  console.log('✅ All DOM elements found correctly');
   
-  // Cargar marcadores
+  // Load bookmarks
   try {
-    console.log('📥 Intentando cargar marcadores desde Chrome...');
+    console.log('📥 Attempting to load bookmarks from browser...');
     const bookmarks = await loadBookmarks();
     
-    // Guardar en variable global
+    // Save to global variable
     globalThis.smartMarkerBookmarks = bookmarks;
     
-    console.log('✅ Marcadores cargados:', bookmarks.length);
-    console.log('📋 Primer marcador:', JSON.stringify(bookmarks[0], null, 2));
+    console.log('✅ Bookmarks loaded:', bookmarks.length);
+    console.log('📋 First bookmark:', JSON.stringify(bookmarks[0], null, 2));
     
-    // Mostrar resultados
+    // Show results
     if (bookmarks.length === 0) {
       resultsContainer.innerHTML = `
         <div class="no-results">
-          <h3>📌 No se encontraron marcadores</h3>
-          <p>✨ Tip: Guarda marcadores en Chrome para usarlos con SmartMarker</p>
-          <p><small>Organiza tus marcadores en carpetas para mejor gestión</small></p>
+          <h3>📌 No bookmarks found</h3>
+          <p>✨ Tip: Save bookmarks in your browser to use with SmartMarker</p>
+          <p><small>Organize your bookmarks in folders for better management</small></p>
         </div>
       `;
-      console.warn('⚠️ No hay marcadores guardados en Chrome');
+      console.warn('⚠️ No bookmarks saved in browser');
     } else {
       displayResults(bookmarks, resultsContainer);
-      console.log('🎯 Marcadores mostrados en la interfaz');
+      console.log('🎯 Bookmarks displayed in interface');
     }
     
   } catch (error) {
-    console.error('❌ ERROR FATAL al cargar marcadores:', error);
+    console.error('❌ FATAL ERROR loading bookmarks:', error);
     resultsContainer.innerHTML = `
       <div class="error">
-        <h3>❌ Error al cargar marcadores</h3>
-        <p>${error.message || 'Error desconocido'}</p>
-        <p><small>Verifica la consola (F12) para más detalles</small></p>
+        <h3>❌ Error loading bookmarks</h3>
+        <p>${error.message || 'Unknown error'}</p>
+        <p><small>Check console (F12) for details</small></p>
       </div>
     `;
   }
   
-  // Configurar eventos de búsqueda
+  // Set up search events
   if (searchBtn && searchInput) {
-    console.log('🔍 Configurando eventos de búsqueda...');
+    console.log('🔍 Setting up search events...');
     
     const handleSearch = () => {
       const query = searchInput.value.trim();
-      console.log('🔎 Búsqueda realizada:', query || '(vacío)');
+      console.log('🔎 Search performed:', query || '(empty)');
       
-      // Usar la variable global
+      // Use global variable
       const bookmarks = globalThis.smartMarkerBookmarks || [];
       filterAndDisplayResults(query, bookmarks, resultsContainer);
     };
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (e.key === 'Enter') handleSearch();
     });
     
-    console.log('✅ Eventos de búsqueda configurados correctamente');
+    console.log('✅ Search events set up correctly');
   }
 });
 
@@ -99,32 +99,32 @@ document.addEventListener('DOMContentLoaded', async () => {
 // ============================================
 
 /**
- * Carga todos los marcadores desde Chrome
+ * Load all bookmarks from browser
  */
 async function loadBookmarks() {
-  console.log('📥 loadBookmarks() - Iniciando...');
+  console.log('📥 loadBookmarks() - Starting...');
   
   return new Promise((resolve, reject) => {
     chrome.bookmarks.getTree((bookmarksTree) => {
-      console.log('📊 chrome.bookmarks.getTree() - Respuesta recibida');
+      console.log('📊 chrome.bookmarks.getTree() - Response received');
       
-      // Verificar errores
+      // Check for errors
       if (chrome.runtime.lastError) {
         console.error('❌ chrome.runtime.lastError:', chrome.runtime.lastError);
-        reject(new Error('No se pudo acceder a los marcadores: ' + chrome.runtime.lastError.message));
+        reject(new Error('Could not access bookmarks: ' + chrome.runtime.lastError.message));
         return;
       }
       
-      // Verificar que el árbol no esté vacío
+      // Check if tree is empty
       if (!bookmarksTree || bookmarksTree.length === 0) {
-        console.warn('⚠️ bookmarksTree está vacío');
+        console.warn('⚠️ bookmarksTree is empty');
         resolve([]);
         return;
       }
       
-      console.log('🔍 Procesando árbol de marcadores...');
+      console.log('🔍 Processing bookmark tree...');
       const bookmarks = extractBookmarks(bookmarksTree);
-      console.log('✅ extractBookmarks() completado:', bookmarks.length, 'marcadores');
+      console.log('✅ extractBookmarks() completed:', bookmarks.length, 'bookmarks');
       
       resolve(bookmarks);
     });
@@ -132,10 +132,10 @@ async function loadBookmarks() {
 }
 
 /**
- * Extrae marcadores del árbol de Chrome
+ * Extract bookmarks from browser tree
  */
 function extractBookmarks(bookmarksTree) {
-  console.log('🌳 extractBookmarks() - Iniciando...');
+  console.log('🌳 extractBookmarks() - Starting...');
   const bookmarks = [];
   let totalNodes = 0;
   let bookmarkCount = 0;
@@ -144,40 +144,40 @@ function extractBookmarks(bookmarksTree) {
     totalNodes++;
     const currentPath = path ? `${path}/${node.title}` : node.title;
     
-    // Si es un marcador (tiene URL)
+    // If it's a bookmark (has URL)
     if (node.url) {
       bookmarkCount++;
       bookmarks.push({
         id: node.id,
-        title: node.title || 'Sin título',
+        title: node.title || 'No title',
         url: node.url,
         tags: node.tags || [],
         folderPath: currentPath
       });
     }
     
-    // Recorrer hijos
+    // Traverse children
     if (node.children) {
       node.children.forEach(child => traverse(child, currentPath));
     }
   }
   
-  // Recorrer todo el árbol
+  // Traverse entire tree
   bookmarksTree.forEach(node => traverse(node, ''));
   
-  console.log(`✅ Recorrido completo: ${totalNodes} nodos, ${bookmarkCount} marcadores`);
-  console.log('📝 Primeros marcadores:', bookmarks.slice(0, 3));
+  console.log(`✅ Complete traversal: ${totalNodes} nodes, ${bookmarkCount} bookmarks`);
+  console.log('📝 First bookmarks:', bookmarks.slice(0, 3));
   
   return bookmarks;
 }
 
 /**
- * Filtra y muestra resultados
+ * Filter and display results
  */
 function filterAndDisplayResults(query, bookmarks, resultsContainer) {
   console.log('🔍 filterAndDisplayResults() - Query:', query, '| Total bookmarks:', bookmarks.length);
   
-  // Filtrar marcadores
+  // Filter bookmarks
   const filteredBookmarks = bookmarks.filter(bookmark => {
     const queryLower = query.toLowerCase();
     const titleMatch = bookmark.title.toLowerCase().includes(queryLower);
@@ -186,7 +186,7 @@ function filterAndDisplayResults(query, bookmarks, resultsContainer) {
     return query === '' || titleMatch || urlMatch;
   });
   
-  console.log('📊 Resultados filtrados:', filteredBookmarks.length, 'de', bookmarks.length);
+  console.log('📊 Filtered results:', filteredBookmarks.length, 'of', bookmarks.length);
   displayResults(filteredBookmarks, resultsContainer);
 }
 
@@ -194,35 +194,35 @@ function filterAndDisplayResults(query, bookmarks, resultsContainer) {
  * Muestra los resultados en la interfaz
  */
 function displayResults(bookmarks, container) {
-  console.log('🖼 displayResults() - Mostrando', bookmarks.length, 'marcadores');
+  console.log('🖼 displayResults() - Showing', bookmarks.length, 'bookmarks');
   
-  // Validación
+  // Validation
   if (!container) {
-    console.error('❌ Container no encontrado');
+    console.error('❌ Container not found');
     return;
   }
   
-  // Limpiar resultados
+  // Clear results
   container.innerHTML = '';
   
-  // Si no hay resultados
+  // If no results
   if (bookmarks.length === 0) {
     container.innerHTML = `
       <div class="no-results">
-        <h3>🔍 No se encontraron resultados</h3>
-        <p>Prueba con otro término de búsqueda</p>
+        <h3>🔍 No results found</h3>
+        <p>Try a different search term</p>
       </div>
     `;
     return;
   }
   
-  // Mostrar cada marcador
+  // Show each bookmark
   bookmarks.forEach(bookmark => {
     try {
       const resultItem = document.createElement('div');
       resultItem.className = 'result-item';
       resultItem.onclick = () => {
-        console.log('🌐 Abriendo URL:', bookmark.url);
+        console.log('🌐 Opening URL:', bookmark.url);
         chrome.tabs.create({ url: bookmark.url });
       };
       resultItem.style.cursor = 'pointer';
@@ -236,13 +236,13 @@ function displayResults(bookmarks, container) {
         resultItem.style.transform = '';
       });
 
-      // Extraer carpeta
-      const folderName = (bookmark.folderPath || 'Sin carpeta').split('/').pop();
+      // Extract folder
+      const folderName = (bookmark.folderPath || 'No folder').split('/').pop();
 
-      // Crear elementos
+      // Create elements
       const titleEl = document.createElement('div');
       titleEl.className = 'result-title';
-      titleEl.textContent = bookmark.title || 'Sin título';
+      titleEl.textContent = bookmark.title || 'No title';
       titleEl.style.fontWeight = '600';
       titleEl.style.marginBottom = '4px';
 
@@ -257,7 +257,7 @@ function displayResults(bookmarks, container) {
       const folderEl = document.createElement('div');
       folderEl.className = 'result-folder';
       folderEl.textContent = folderName;
-      folderEl.title = bookmark.folderPath || 'Sin carpeta';
+      folderEl.title = bookmark.folderPath || 'No folder';
       folderEl.style.fontSize = '11px';
       folderEl.style.color = '#2980b9';
       folderEl.style.backgroundColor = '#e3f2fd';
@@ -272,14 +272,13 @@ function displayResults(bookmarks, container) {
       tagsEl.style.gap = '4px';
       tagsEl.style.flexWrap = 'wrap';
 
-      // Añadir tags si existen
+      // Add tags if they exist
       if (bookmark.tags && bookmark.tags.length > 0) {
         bookmark.tags.forEach(tag => {
           const tagEl = document.createElement('span');
           tagEl.className = 'tag';
           tagEl.textContent = tag;
           tagEl.style.backgroundColor = '#e3f2fd';
-          tagEl.textContent = tag;
           tagEl.style.color = '#1976d2';
           tagEl.style.padding = '2px 6px';
           tagEl.style.borderRadius = '10px';
@@ -289,7 +288,7 @@ function displayResults(bookmarks, container) {
         });
       }
 
-      // Añadir elementos al resultado
+      // Add elements to result
       resultItem.appendChild(titleEl);
       resultItem.appendChild(urlEl);
       resultItem.appendChild(folderEl);
@@ -298,7 +297,7 @@ function displayResults(bookmarks, container) {
       container.appendChild(resultItem);
       
     } catch (error) {
-      console.error('❌ Error al crear elemento de marcador:', error);
+      console.error('❌ Error creating bookmark element:', error);
     }
   });
 }

@@ -16,7 +16,7 @@
     "default_path": "src/sidepanel/sidepanel.html"
   },
   "background": {
-    "service_worker": "src/background/service-worker.js"
+    "scripts": ["src/background/service-worker.js"]
   },
   "icons": {
     "16": "src/icons/icon16.png",
