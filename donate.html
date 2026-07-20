@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support SmartMarker - Donate</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .donate-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+
+    .donate-header {
+      background: linear-gradient(135deg, #3498db, #2c3e50);
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .donate-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .donate-header p {
+      font-size: 1.2rem;
+      opacity: 0.95;
+    }
+
+    .donate-button-container {
+      padding: 40px 30px;
+      text-align: center;
+      background: #f8f9fa;
+    }
+
+    .donate-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #0070ba, #003087);
+      color: white;
+      padding: 18px 36px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 1.3rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(0, 112, 186, 0.35);
+      border: none;
+      cursor: pointer;
+    }
+
+    .donate-button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 112, 186, 0.45);
+    }
+
+    .donate-button:active {
+      transform: translateY(-1px);
+    }
+
+    .donate-button i {
+      font-size: 1.5rem;
+    }
+
+    .donate-amounts {
+      margin-top: 20px;
+      color: #6c757d;
+      font-size: 0.95rem;
+    }
+
+    .donation-info {
+      padding: 40px 30px;
+    }
+
+    .donation-info h3 {
+      color: #2c3e50;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.4rem;
+    }
+
+    .donation-info ul {
+      padding-left: 25px;
+      margin-bottom: 30px;
+    }
+
+    .donation-info li {
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+
+    .donation-info li strong {
+      color: #3498db;
+    }
+
+    .version-info {
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 30px 0;
+      border-left: 4px solid #2196f3;
+    }
+
+    .version-info h4 {
+      color: #1976d2;
+      margin-bottom: 10px;
+    }
+
+    .testimonial {
+      background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 30px 0;
+      border-left: 5px solid #4caf50;
+    }
+
+    .testimonial blockquote {
+      margin: 0;
+      font-style: italic;
+      color: #388e3c;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+
+    .testimonial footer {
+      margin-top: 15px;
+      font-weight: 600;
+      color: #2e7d32;
+    }
+
+    .other-ways {
+      background: #f0f8ff;
+      padding: 30px;
+      border-radius: 12px;
+      margin: 30px 0;
+    }
+
+    .other-ways h3 {
+      color: #1976d2;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.4rem;
+    }
+
+    .other-ways ul {
+      padding-left: 25px;
+      margin: 0;
+    }
+
+    .other-ways li {
+      margin-bottom: 12px;
+    }
+
+    .other-ways a {
+      color: #1976d2;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .other-ways a:hover {
+      color: #1565c0;
+      text-decoration: underline;
+    }
+
+    .other-ways a i {
+      font-size: 1.1rem;
+    }
+
+    .back-link {
+      text-align: center;
+      padding: 30px;
+      background: #f8f9fa;
+    }
+
+    .back-link a {
+      color: #6c757d;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .back-link a:hover {
+      color: #3498db;
+      text-decoration: underline;
+    }
+
+    .back-link a i {
+      font-size: 1.1rem;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .donate-header h1 {
+        font-size: 2rem;
+      }
+
+      .donate-button {
+        padding: 16px 28px;
+        font-size: 1.1rem;
+      }
+
+      .donation-info, .donation-info h3, .other-ways h3 {
+        font-size: 1.2rem;
+      }
+
+      .donate-container {
+        margin: 0;
+        border-radius: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      .donate-header h1 {
+        font-size: 1.8rem;
+      }
+
+      .donate-button {
+        padding: 14px 24px;
+        font-size: 1rem;
+      }
+
+      .donate-button i {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="donate-container">
+    <div class="donate-header">
+      <h1>💙 Support SmartMarker Development</h1>
+      <p>SmartMarker is free and open source, but your donations help keep it growing!</p>
+    </div>
+
+    <div class="donate-button-container">
+      <a href="https://www.paypal.com/donate/?hosted_button_id=SPMZP3BUPVMMA" target="_blank" class="donate-button">
+        <i class="fab fa-paypal"></i> Donate with PayPal
+      </a>
+      <p class="donate-amounts">
+        <small>Any amount is appreciated: $1, $5, $10, $25 or more</small>
+      </p>
+    </div>
+
+    <div class="donation-info">
+      <h3><i class="fas fa-heart"></i> How Your Donation Helps</h3>
+      <ul>
+        <li><strong>✅ Faster Development:</strong> More time to fix bugs and add features</li>
+        <li><strong>✅ Cross-Browser Support:</strong> Help us support Safari and other browsers</li>
+        <li><strong>✅ Cloud Features:</strong> Future sync and backup options</li>
+        <li><strong>✅ Maintenance:</strong> Keep the extension updated and secure</li>
+        <li><strong>✅ Your Name:</strong> Get listed in our contributors list (optional)</li>
+      </ul>
+
+      <div class="version-info">
+        <h4>Current Version</h4>
+        <p><strong>SmartMarker Plugin v1.0</strong></p>
+        <p><small>Last updated: July 2025</small></p>
+      </div>
+    </div>
+
+    <div class="testimonial">
+      <blockquote>
+        <p>"SmartMarker has saved me hours of bookmark management. Happy to support this great tool!"</p>
+        <footer>— Alex, SmartMarker User</footer>
+      </blockquote>
+    </div>
+
+    <div class="other-ways">
+      <h3><i class="fas fa-handshake"></i> Other Ways to Help</h3>
+      <ul>
+        <li><a href="https://github.com/pablo-velilla/smart-marker-plugin" target="_blank"><i class="fab fa-github"></i> Star the project on GitHub</a></li>
+        <li><a href="https://github.com/pablo-velilla/smart-marker-plugin/issues" target="_blank"><i class="fas fa-bug"></i> Report bugs or suggest features</a></li>
+        <li><a href="https://github.com/pablo-velilla/smart-marker-plugin/discussions" target="_blank"><i class="fas fa-comments"></i> Join the community discussion</a></li>
+      </ul>
+    </div>
+
+    <div class="back-link">
+      <a href="https://github.com/pablo-velilla/smart-marker-plugin"><i class="fas fa-arrow-left"></i> Back to GitHub</a>
+    </div>
+  </div>
+</body>
+</html>

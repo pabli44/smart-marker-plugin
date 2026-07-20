@@ -8,17 +8,27 @@
 </head>
 <body>
   <div class="container">
-    <h1>SmartMarker</h1>
+    <div class="header-section">
+      <h1>SmartMarker</h1>
+      <div class="donate-link">
+        <a href="https://www.paypal.com/donate/?hosted_button_id=SPMZP3BUPVMMA" target="_blank" title="Support SmartMarker development">
+          <i class="fas fa-heart"></i> Paypal Support
+        </a>
+      </div>
+    </div>
+    
     <div class="search-box">
       <input type="text" id="searchInput" placeholder="Search bookmarks...">
       <button id="searchBtn">🔍 Search</button>
     </div>
 
     <div class="results-container">
-      
-      <div class="results" id="results"></div>
+    <div class="results" id="results"></div>
     </div>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+  <script src="popup.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
   <script src="popup.js"></script>
 </body>

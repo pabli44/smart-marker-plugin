@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 // ============================================
-// FUNCIONES PRINCIPALES
+// MAIN FUNCTIONS
 // ============================================
 
 /**
@@ -191,7 +191,7 @@ function filterAndDisplayResults(query, bookmarks, resultsContainer) {
 }
 
 /**
- * Muestra los resultados en la interfaz
+ * Display results in the interface
  */
 function displayResults(bookmarks, container) {
   console.log('🖼 displayResults() - Showing', bookmarks.length, 'bookmarks');
@@ -302,4 +302,4 @@ function displayResults(bookmarks, container) {
   });
 }
 
-console.log('✅ popup.js cargado correctamente');
+console.log('✅ popup.js loaded successfully');

@@ -1,8 +1,8 @@
 
 // @ts-check
 
-// Lógica para el panel lateral de SmartMarker
-console.log('Panel lateral cargado');
+// SmartMarker Side Panel Logic
+console.log('Side panel loaded');
 
 document.addEventListener('DOMContentLoaded', async () => {
   const searchInput = document.getElementById('sidepanelSearchInput');
@@ -13,14 +13,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   let tags = new Set();
 
   try {
-    console.log('Cargando bookmarks en panel lateral...');
+    console.log('Loading bookmarks in side panel...');
     bookmarks = await loadBookmarks();
-    console.log('Bookmarks cargados:', bookmarks.length);
+    console.log('Bookmarks loaded:', bookmarks.length);
     
     displayResults(bookmarks, resultsContainer);
-    console.log('Resultados mostrados');
+    console.log('Results displayed');
   } catch (error) {
-    console.error('Error al cargar marcadores:', error);
+    console.error('Error loading bookmarks:', error);
     if (resultsContainer) {
       resultsContainer.innerHTML = '<div class="error">Error: ' + (error.message || String(error)) + '</div>';
     }
@@ -47,24 +47,24 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 async function loadBookmarks() {
-  console.log('Cargando marcadores en panel lateral...');
+  console.log('Loading bookmarks in side panel...');
   return new Promise((resolve, reject) => {
     chrome.bookmarks.getTree((bookmarksTree) => {
-      console.log('Resultado de getTree:', bookmarksTree);
+      console.log('getTree result:', bookmarksTree);
       if (chrome.runtime.lastError) {
-        console.error('Error de Chrome API:', chrome.runtime.lastError);
+        console.error('Chrome API error:', chrome.runtime.lastError);
         reject(chrome.runtime.lastError);
         return;
       }
       
       if (!bookmarksTree || bookmarksTree.length === 0) {
-        console.warn('No se encontraron marcadores');
+        console.warn('No bookmarks found');
         resolve([]);
         return;
       }
       
       const bookmarks = extractBookmarks(bookmarksTree);
-      console.log('Bookmarks extraídos:', bookmarks.length);
+      console.log('Bookmarks extracted:', bookmarks.length);
       resolve(bookmarks);
     });
   });
@@ -125,17 +125,17 @@ function filterAndDisplayResults(query, selectedTag, bookmarks, resultsContainer
 }
 
 function displayResults(bookmarks, container) {
-  console.log('Mostrando resultados en panel lateral:', bookmarks.length);
+  console.log('Displaying results in side panel:', bookmarks.length);
   
   if (!container) {
-    console.error('Container no encontrado en panel lateral');
+    console.error('Container not found in side panel');
     return;
   }
   
   if (bookmarks.length === 0) {
-    container.innerHTML = '<div class="no-results">No se encontraron marcadores. 
-      <br><br>💡 <strong>Tip:</strong> Guarda marcadores en Chrome para usarlos con SmartMarker.
-      <br><br><small>Puedes organizar tus marcadores en carpetas para mejor gestión</small></div>';
+    container.innerHTML = '<div class="no-results">No bookmarks found.
+      <br><br>💡 <strong>Tip:</strong> Save bookmarks in Chrome to use with SmartMarker.
+      <br><br><small>You can organize your bookmarks in folders for better management</small></div>';
     return;
   }
 
@@ -149,16 +149,16 @@ function displayResults(bookmarks, container) {
       };
 
       // Extraer la carpeta del bookmark
-      const folderPath = bookmark.folderPath || 'Sin carpeta';
-      const folderName = folderPath.split('/').pop() || 'Sin carpeta';
+      const folderPath = bookmark.folderPath || 'No folder';
+      const folderName = folderPath.split('/').pop() || 'No folder';
 
       const title = document.createElement('div');
       title.className = 'result-title';
-      title.textContent = bookmark.title || 'Sin título';
+      title.textContent = bookmark.title || 'No title';
 
       const url = document.createElement('div');
       url.className = 'result-url';
-      url.textContent = bookmark.url || 'Sin URL';
+      url.textContent = bookmark.url || 'No URL';
 
       const folder = document.createElement('div');
       folder.className = 'result-folder';
@@ -183,7 +183,7 @@ function displayResults(bookmarks, container) {
       resultItem.appendChild(tagsContainer);
       container.appendChild(resultItem);
     } catch (error) {
-      console.error('Error al procesar bookmark:', error);
+      console.error('Error processing bookmark:', error);
     }
   });
 }
