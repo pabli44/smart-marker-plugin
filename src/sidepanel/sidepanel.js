@@ -1,7 +1,8 @@
-
 // @ts-check
 
 // SmartMarker Side Panel Logic
+import { fetchBookmarks, createSearchIndex, searchBookmarks } from '../shared/bookmarks.js';
+
 console.log('Side panel loaded');
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -10,13 +11,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   const resultsContainer = document.getElementById('sidepanelResults');
 
   let bookmarks = [];
-  let tags = new Set();
+  let fuseIndex = null;
 
   try {
     console.log('Loading bookmarks in side panel...');
-    bookmarks = await loadBookmarks();
+    bookmarks = await fetchBookmarks();
     console.log('Bookmarks loaded:', bookmarks.length);
-    
+
+    fuseIndex = createSearchIndex(bookmarks);
     displayResults(bookmarks, resultsContainer);
     console.log('Results displayed');
   } catch (error) {
@@ -26,116 +28,38 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  // Configurar eventos
-  searchBtn.addEventListener('click', () => {
-    const query = searchInput.value.trim();
-    const selectedTag = tagFilter.value;
-    filterAndDisplayResults(query, selectedTag, bookmarks, resultsContainer);
-  });
+  const handleSearch = () => {
+    const query = searchInput ? searchInput.value : '';
+    const results = fuseIndex
+      ? searchBookmarks(fuseIndex, query)
+      : [];
+    displayResults(results, resultsContainer);
+  };
 
-  searchInput.addEventListener('input', () => {
-    const query = searchInput.value.trim();
-    const selectedTag = tagFilter.value;
-    filterAndDisplayResults(query, selectedTag, bookmarks, resultsContainer);
-  });
-
-  tagFilter.addEventListener('change', () => {
-    const query = searchInput.value.trim();
-    const selectedTag = tagFilter.value;
-    filterAndDisplayResults(query, selectedTag, bookmarks, resultsContainer);
-  });
-});
-
-async function loadBookmarks() {
-  console.log('Loading bookmarks in side panel...');
-  return new Promise((resolve, reject) => {
-    chrome.bookmarks.getTree((bookmarksTree) => {
-      console.log('getTree result:', bookmarksTree);
-      if (chrome.runtime.lastError) {
-        console.error('Chrome API error:', chrome.runtime.lastError);
-        reject(chrome.runtime.lastError);
-        return;
-      }
-      
-      if (!bookmarksTree || bookmarksTree.length === 0) {
-        console.warn('No bookmarks found');
-        resolve([]);
-        return;
-      }
-      
-      const bookmarks = extractBookmarks(bookmarksTree);
-      console.log('Bookmarks extracted:', bookmarks.length);
-      resolve(bookmarks);
-    });
-  });
-}
-
-function extractBookmarks(bookmarksTree) {
-  const bookmarks = [];
-
-  function traverse(node, path = '') {
-    const currentPath = path ? `${path}/${node.title}` : node.title;
-    
-    if (node.url) {
-      bookmarks.push({
-        id: node.id,
-        title: node.title,
-        url: node.url,
-        tags: node.tags || [],
-        folderPath: currentPath
-      });
-    }
-
-    if (node.children) {
-      node.children.forEach(child => traverse(child, currentPath));
-    }
+  if (searchBtn) {
+    searchBtn.addEventListener('click', handleSearch);
   }
 
-  bookmarksTree.forEach(node => traverse(node, ''));
-  return bookmarks;
-}
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+  }
+});
 
-function extractTags(bookmarks) {
-  const tags = new Set();
-  bookmarks.forEach(bookmark => {
-    bookmark.tags.forEach(tag => tags.add(tag));
-  });
-  return tags;
-}
-
-function populateTagFilter(tags, tagFilter) {
-  tags.forEach(tag => {
-    const option = document.createElement('option');
-    option.value = tag;
-    option.textContent = tag;
-    tagFilter.appendChild(option);
-  });
-}
-
-function filterAndDisplayResults(query, selectedTag, bookmarks, resultsContainer) {
-  const filteredBookmarks = bookmarks.filter(bookmark => {
-    const matchesQuery = query === '' || 
-      bookmark.title.toLowerCase().includes(query.toLowerCase()) ||
-      bookmark.url.toLowerCase().includes(query.toLowerCase());
-
-    return matchesQuery;
-  });
-
-  displayResults(filteredBookmarks, resultsContainer);
-}
-
+/**
+ * Display results in the side panel interface
+ */
 function displayResults(bookmarks, container) {
   console.log('Displaying results in side panel:', bookmarks.length);
-  
+
   if (!container) {
     console.error('Container not found in side panel');
     return;
   }
-  
+
   if (bookmarks.length === 0) {
-    container.innerHTML = '<div class="no-results">No bookmarks found.
-      <br><br>💡 <strong>Tip:</strong> Save bookmarks in Chrome to use with SmartMarker.
-      <br><br><small>You can organize your bookmarks in folders for better management</small></div>';
+    container.innerHTML = '<div class="no-results">No bookmarks found.' +
+      '<br><br>💡 <strong>Tip:</strong> Save bookmarks in Chrome to use with SmartMarker.' +
+      '<br><br><small>You can organize your bookmarks in folders for better management</small></div>';
     return;
   }
 
@@ -148,10 +72,6 @@ function displayResults(bookmarks, container) {
         chrome.tabs.create({ url: bookmark.url });
       };
 
-      // Extraer la carpeta del bookmark
-      const folderPath = bookmark.folderPath || 'No folder';
-      const folderName = folderPath.split('/').pop() || 'No folder';
-
       const title = document.createElement('div');
       title.className = 'result-title';
       title.textContent = bookmark.title || 'No title';
@@ -162,25 +82,12 @@ function displayResults(bookmarks, container) {
 
       const folder = document.createElement('div');
       folder.className = 'result-folder';
-      folder.textContent = folderName;
-      folder.title = folderPath; // Tooltip con la ruta completa
-
-      const tagsContainer = document.createElement('div');
-      tagsContainer.className = 'result-tags';
-
-      if (bookmark.tags && bookmark.tags.length > 0) {
-        bookmark.tags.forEach(tag => {
-          const tagElement = document.createElement('span');
-          tagElement.className = 'tag';
-          tagElement.textContent = tag;
-          tagsContainer.appendChild(tagElement);
-        });
-      }
+      folder.textContent = bookmark.folderName || 'No folder';
+      folder.title = bookmark.folderPath || 'No folder';
 
       resultItem.appendChild(title);
       resultItem.appendChild(url);
       resultItem.appendChild(folder);
-      resultItem.appendChild(tagsContainer);
       container.appendChild(resultItem);
     } catch (error) {
       console.error('Error processing bookmark:', error);
