@@ -182,7 +182,7 @@ h1 {
   justify-content: flex-end;
 }
 
-tag {
+.tag {
   background: linear-gradient(135deg, #e3f2fd, #bbdefb);
   color: #1565c0;
   padding: 4px 10px;
@@ -193,7 +193,7 @@ tag {
   transition: all 0.2s;
 }
 
-tag:hover {
+.tag:hover {
   transform: scale(1.05);
   box-shadow: 0 2px 8px rgba(144, 202, 249, 0.3);
 }
