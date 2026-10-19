@@ -79,10 +79,11 @@ export function createSearchIndex(bookmarks) {
 
   return new Fuse(bookmarks, {
     keys: ['title', 'url', 'folderPath'],
-    threshold: 0.4,
+    threshold: 0.25,
     includeScore: true,
-    ignoreLocation: true,
-    minMatchCharLength: 1
+    ignoreLocation: false,
+    minMatchCharLength: 2,
+    distance: 100
   });
 }
 
